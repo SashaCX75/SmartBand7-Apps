@@ -90,6 +90,44 @@
         }
       ],
       "designWidth": 194
+    },
+    
+    "gtr-4": {
+      "module": {
+        "page": {
+          "pages": [
+            "page/MainScreen",
+            "page/AboutScreen",
+            "page/AppEditScreen",
+            "page/AppListScreen",
+            "page/FileEditScreen",
+            "page/FileManagerScreen",
+            "page/HexdumpScreen",
+            "page/ImageViewScreen",
+            "page/RebootConfirmScreen",
+            "page/SettingsHomePage",
+            "page/SettingsLangScreen",
+            "page/SettingsMiscPage",
+            "page/SettingsUiScreen",
+            "page/StorageInfoScreen",
+            "page/TextViewScreen",
+            "page/TimerOutScreen",
+            "page/TimerSetScreen",
+            "page/ToggleDanger"
+          ]
+        }
+      },
+      "platforms": [
+        {
+          "name": "gtr4",
+          "deviceSource": 7930112
+        },
+        {
+          "name": "gtr4-w",
+          "deviceSource": 7930113
+        }
+      ],
+      "designWidth": 466
     }
   },
   "permissions": [],

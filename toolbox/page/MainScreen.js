@@ -12,6 +12,8 @@ import { SettingsHomePage } from "./SettingsHomePage";
 
 extendLocale(MAIN_SCREEN_TRANSLATIONS);
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 const { config } = getApp()._options.globalData;
 
 class MainScreen {
@@ -45,9 +47,11 @@ class MainScreen {
   drawBattery() {
     const battery = hmSensor.createSensor(hmSensor.id.BATTERY);
     const value = battery.current + "%";
+    
+    console.log(`drawBattery  value=${value}`);
 
     hmUI.createWidget(hmUI.widget.TEXT, {
-      x: 84,
+      x: (DEVICE_WIDTH-192)/2 + 84,
       y: 28,
       w: 48,
       h: 24,
@@ -58,7 +62,7 @@ class MainScreen {
     });
 
     const batImg = hmUI.createWidget(hmUI.widget.IMG, {
-      x: 0,
+      x: (DEVICE_WIDTH-192)/2,
       y: 0,
       w: 192,
       h: 64,
@@ -89,7 +93,7 @@ class MainScreen {
         iconName = `qs/${id}_on.png`
 
       const widgetConfig = {
-        x: 0 + (i % 2) * 100,
+        x: (DEVICE_WIDTH-192)/2 + (i % 2) * 100,
         y: topOffset + Math.floor(i / 2) * 100,
         w: 92,
         h: 92,
@@ -123,7 +127,7 @@ class MainScreen {
 
     // Edit button
     const editButton = hmUI.createWidget(hmUI.widget.TEXT, {
-      x: 0,
+      x: (DEVICE_WIDTH-192)/2,
       y: topOffset + 12 + Math.ceil(i / 2) * 100,
       w: 192,
       h: 72,
@@ -139,21 +143,25 @@ class MainScreen {
   }
 
   drawBrightness() {
+    console.log(`drawBrightness`);
     hmUI.createWidget(hmUI.widget.FILL_RECT, {
       ...baseBrightnessConfig,
       color: 0x222222,
+      x: (DEVICE_WIDTH-192)/2,
       w: 192
     });
 
     this.widgetBrightness = hmUI.createWidget(hmUI.widget.FILL_RECT, {
       ...baseBrightnessConfig,
       color: 0x999999,
+      x: (DEVICE_WIDTH-192)/2,
       alpha: 80,
       w: 10
     });
 
     const basement = hmUI.createWidget(hmUI.widget.IMG, {
       ...baseBrightnessConfig,
+      x: (DEVICE_WIDTH-192)/2,
       w: 192,
       pos_x: 20,
       pos_y: 18,

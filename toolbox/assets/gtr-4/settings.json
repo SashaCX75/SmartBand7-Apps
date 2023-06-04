@@ -1,0 +1,12 @@
+{
+	"tiles": [
+		"apps",
+		"files",
+		"storage",
+		"timer",
+		"dnd",
+		"camera"
+	],
+	"withBrightness": true,
+	"withBattery": false
+}

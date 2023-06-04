@@ -5,6 +5,8 @@ import {TIMER_TRANSLATIONS} from "../utils/translations";
 import { AppGesture } from "../../lib/AppGesture";
 import {STYLE_DISPLAY, STYLE_EDIT_BTN, STYLE_EDIT_DEG, STYLE_EDIT_INC} from "./styles/TimerStyles";
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 extendLocale(TIMER_TRANSLATIONS)
 
 const { config } = getApp()._options.globalData;
@@ -94,7 +96,7 @@ class TimerSetScreen {
 		});
 
 		this.actionButton = hmUI.createWidget(hmUI.widget.BUTTON, {
-			x: 0,
+			x: (DEVICE_WIDTH-192)/2,
 			y: 400,
 			w: 192,
 			h: 90,
@@ -198,6 +200,7 @@ class TimerSetScreen {
 
 Page({
   onInit(p) {
+    console.log(`TimerSetScreen`);
     AppGesture.withYellowWorkaround("left", {
       appid: 33904,
       url: "page/TimerSetScreen",

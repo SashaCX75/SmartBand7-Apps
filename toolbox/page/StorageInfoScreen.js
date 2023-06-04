@@ -4,12 +4,14 @@ import { AppGesture } from "../../lib/AppGesture";
 
 import {STORAGE_INFO_TRANSLATIONS} from "../utils/translations";
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 extendLocale(STORAGE_INFO_TRANSLATIONS);
 
 class StorageInfoScreen {
   start() {
     const cupStyle = {
-      x: 16,
+      x: (DEVICE_WIDTH-192)/2 + 16,
       y: 72,
       w: 32,
       h: 320,
@@ -60,7 +62,7 @@ class StorageInfoScreen {
 
       // Text
       hmUI.createWidget(hmUI.widget.TEXT, {
-        x: 72,
+        x: (DEVICE_WIDTH-192)/2 + 72,
         y: posY,
         w: 120,
         h: 24,
@@ -68,7 +70,7 @@ class StorageInfoScreen {
         text: t("storage_" + currentRow.key),
       });
       hmUI.createWidget(hmUI.widget.TEXT, {
-        x: 72,
+        x: (DEVICE_WIDTH-192)/2 + 72,
         y: posY + 24,
         w: 120,
         h: 48,
@@ -100,6 +102,7 @@ class StorageInfoScreen {
 
 Page({
   onInit(p) {
+    console.log(`StorageInfoScreen`);
     AppGesture.withYellowWorkaround("left", {
       appid: 33904,
       url: "page/StorageInfoScreen",

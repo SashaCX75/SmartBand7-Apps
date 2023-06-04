@@ -1,5 +1,7 @@
 import { AppGesture } from "../../lib/AppGesture";
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 class ImageViewScreen {
 	constructor(data) {
 		this.path = data;
@@ -19,8 +21,8 @@ class ImageViewScreen {
       hmUI.showToast({text: width + "x" + height});
 
       hmUI.createWidget(hmUI.widget.IMG, {
-        x: (192 - width) / 2,
-        y: (490 - height) / 2,
+        x: (DEVICE_WIDTH - width) / 2,
+        y: (DEVICE_HEIGHT - height) / 2,
         src: this.path
       });
 	}
@@ -28,6 +30,7 @@ class ImageViewScreen {
 
 Page({
   onInit(p) {
+    console.log(`ImageViewScreen`);
     AppGesture.withYellowWorkaround("left", {
       appid: 33904,
       url: "page/ImageViewScreen",

@@ -43,6 +43,7 @@ export class SettingsHomePage extends SettingsListScreen {
 
 Page({
   onInit(p) {
+    console.log(`SettingsHomePage`);
     AppGesture.withYellowWorkaround("left", {
       appid: 33904,
       url: "page/SettingsHomePage",

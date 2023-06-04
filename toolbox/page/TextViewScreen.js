@@ -4,6 +4,8 @@ import { AppGesture } from "../../lib/AppGesture";
 const BOX_HEIGHT = 300;
 const { config } = getApp()._options.globalData;
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 class TextViewScreen {
 	constructor(data) {
 		this.PAGE_SIZE = 256;
@@ -36,7 +38,7 @@ class TextViewScreen {
 	makeWidgets() {
 		// Text view
 		this.textView = hmUI.createWidget(hmUI.widget.TEXT, {
-			x: 0,
+			x: (DEVICE_WIDTH-192)/2,
 			y: (490 - BOX_HEIGHT) / 2,
 			w: 192,
 			h: BOX_HEIGHT,
@@ -48,7 +50,7 @@ class TextViewScreen {
 
 		// Position view
 		this.posView = hmUI.createWidget(hmUI.widget.TEXT, {
-			x: 0,
+			x: (DEVICE_WIDTH-192)/2,
 			y: 0,
 			w: 192,
 			h: (490 - BOX_HEIGHT) / 2,
@@ -61,7 +63,7 @@ class TextViewScreen {
 
 		// Next btn
 		hmUI.createWidget(hmUI.widget.IMG, {
-			x: 0,
+			x: (DEVICE_WIDTH-192)/2,
 			y: 490/2,
 			w: 192,
 			h: 490/2
@@ -71,7 +73,7 @@ class TextViewScreen {
 
 		// Back btn
 		hmUI.createWidget(hmUI.widget.IMG, {
-			x: 0,
+			x: (DEVICE_WIDTH-192)/2,
 			y: 0,
 			w: 192,
 			h: 490/2
@@ -185,6 +187,7 @@ class TextViewScreen {
 
 Page({
   onInit(p) {
+    console.log(`TextViewScreen`);
     AppGesture.withYellowWorkaround("left", {
       appid: 33904,
       url: "page/TextViewScreen",

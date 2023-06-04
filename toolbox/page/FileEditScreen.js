@@ -6,6 +6,8 @@ import { AppGesture } from "../../lib/AppGesture";
 import {FILE_EDIT_TRANSLATIONS} from "../utils/translations";
 import {openPage} from "../utils/misc";
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 extendLocale(FILE_EDIT_TRANSLATIONS);
 
 class FileEditScreen extends SettingsListScreen {
@@ -142,6 +144,7 @@ class FileEditScreen extends SettingsListScreen {
 
 Page({
   onInit(p) {
+		console.log(`FileEditScreen`);
     AppGesture.withYellowWorkaround("left", {
       appid: 33904,
       url: "page/FileEditScreen",

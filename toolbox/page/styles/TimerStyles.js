@@ -1,5 +1,6 @@
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
 export const STYLE_DISPLAY = {
-  x: 0,
+  x: (DEVICE_WIDTH-192)/2,
   text_size: 80,
   align_h: hmUI.align.CENTER_H,
   align_v: hmUI.align.CENTER_V,
@@ -17,10 +18,10 @@ export const STYLE_EDIT_BTN = {
 };
 export const STYLE_EDIT_INC = {
   text: "+",
-  x: 142
+  x: (DEVICE_WIDTH-192)/2 + 142
 };
 
 export const STYLE_EDIT_DEG = {
   text: "−",
-  x: 0
+  x: (DEVICE_WIDTH-192)/2
 }

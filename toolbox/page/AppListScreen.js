@@ -6,6 +6,8 @@ import { APP_LIST_TRANSLATIONS } from "../utils/translations";
 import { FILE_ROW_TYPE, HEADER_ROW_TYPE } from "./styles/FileManagerRowTypes";
 import { openPage } from "../utils/misc";
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 extendLocale(APP_LIST_TRANSLATIONS);
 
 class AppsListScreen {
@@ -90,7 +92,7 @@ class AppsListScreen {
     const apps = this.fetchApps();
 
     hmUI.createWidget(hmUI.widget.SCROLL_LIST, {
-      x: 0,
+      x: (DEVICE_WIDTH-192)/2,
       y: 0,
       w: 192,
       h: 490,
@@ -137,6 +139,7 @@ class AppsListScreen {
 
 Page({
   onInit(p) {
+		console.log(`AppsListScreen`);
     AppGesture.withYellowWorkaround("left", {
       appid: 33904,
       url: "page/AppsListScreen",

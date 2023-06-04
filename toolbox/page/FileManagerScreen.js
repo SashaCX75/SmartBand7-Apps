@@ -6,6 +6,8 @@ import {HEADER_ROW_TYPE, FILE_ROW_TYPE, FILE_ROW_TYPE_WITH_SIZE} from "./styles/
 
 const { config } = getApp()._options.globalData;
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 class FileManagerScreen {
   constructor(params) {
     this.maxItems = 16;
@@ -35,7 +37,7 @@ class FileManagerScreen {
     hmSetting.setBrightScreen(1800);
 
     this.viewFiles = hmUI.createWidget(hmUI.widget.SCROLL_LIST, {
-      x: 0,
+      x: (DEVICE_WIDTH-192)/2,
       y: 0,
       w: 192,
       h: 490,
@@ -207,6 +209,7 @@ class FileManagerScreen {
 let screen;
 Page({
   onInit(p) {
+		console.log(`FileManagerScreen`);
     AppGesture.withYellowWorkaround("left", {
       appid: 33904,
       url: "page/FileManagerScreen",

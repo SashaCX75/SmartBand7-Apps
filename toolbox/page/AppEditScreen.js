@@ -5,6 +5,8 @@ import {FsTools, Path} from "../../lib/Path";
 
 import {APP_EDIT_TRANSLATIONS} from "../utils/translations";
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 extendLocale(APP_EDIT_TRANSLATIONS)
 
 class AppEditScreen extends SettingsListScreen {
@@ -80,7 +82,7 @@ class AppEditScreen extends SettingsListScreen {
 
 	_prepareFinishGroup() {
 		const group = hmUI.createWidget(hmUI.widget.GROUP, {
-			x: 0,
+			x: (DEVICE_WIDTH-192)/2,
 			y: 0,
 			w: 192,
 			h: 482
@@ -173,6 +175,7 @@ class AppEditScreen extends SettingsListScreen {
 
 Page({
 	onInit(dirname) {
+		console.log(`AppEditScreen`);
 		AppGesture.withYellowWorkaround("left", {
 			appid: 33904,
 			url: "page/AppEditScreen",

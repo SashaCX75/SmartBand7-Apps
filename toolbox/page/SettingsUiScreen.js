@@ -5,6 +5,8 @@ import { AppGesture } from "../../lib/AppGesture";
 
 import {QS_BUTTONS} from "../utils/data";
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 const { config } = getApp()._options.globalData;
 
 class SettingsUiScreen {
@@ -18,7 +20,7 @@ class SettingsUiScreen {
     // Battety
     let withBattery = config.get("withBattery", false);
     const batteryToggle = hmUI.createWidget(hmUI.widget.IMG, {
-      x: 60,
+      x: (DEVICE_WIDTH-192)/2 + 60,
       y: 28,
       src: 'edit/battery_pv.png',
       alpha: withBattery ? 255 : 100
@@ -35,7 +37,7 @@ class SettingsUiScreen {
     // Brightness
     let withBrightness = config.get("withBrightness");
     const brightnessToggle = hmUI.createWidget(hmUI.widget.IMG, {
-      x: 0,
+      x: (DEVICE_WIDTH-192)/2,
       y: 72,
       src: "edit/brightness_cfg.png",
       alpha: withBrightness ? 255 : 100
@@ -56,7 +58,7 @@ class SettingsUiScreen {
       if(!config) return;
       if(config.danger && !allowDanger) return;
 
-      const x = (i % 2) * 100;
+      const x = (DEVICE_WIDTH-192)/2 + (i % 2) * 100;
       const y = 154 + Math.floor(i / 2) * 100;
 
       const btn = hmUI.createWidget(hmUI.widget.IMG, {
@@ -80,7 +82,7 @@ class SettingsUiScreen {
     // Screen overflow
     const end_y = 166 + Math.ceil(Object.keys(QS_BUTTONS).length / 2) * 100;
     hmUI.createWidget(hmUI.widget.TEXT, {
-      x: 0,
+      x: (DEVICE_WIDTH-192)/2,
       y: end_y,
       w: 192,
       h: 72,

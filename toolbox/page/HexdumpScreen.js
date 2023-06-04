@@ -1,6 +1,8 @@
 import { AppGesture } from "../../lib/AppGesture";
 import {FsUtils} from "../../lib/FsUtils";
 
+const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } = hmSetting.getDeviceInfo();
+
 class HexdumpScreen {
 	constructor(data) {
 		this.path = data;
@@ -12,7 +14,7 @@ class HexdumpScreen {
 		this.file = FsUtils.open(this.path);
 
 		this.header = hmUI.createWidget(hmUI.widget.TEXT, {
-			x: 0,
+			x: (DEVICE_WIDTH-192)/2,
 			y: 0,
 			w: 192,
 			h: 72,
@@ -26,7 +28,7 @@ class HexdumpScreen {
 		this.textColumns = [];
 		for(let i = 0; i < 4; i++) {
 			this.columns.push(hmUI.createWidget(hmUI.widget.TEXT, {
-				x: 4 + (26*i),
+				x: (DEVICE_WIDTH-192)/2 + 4 + (26*i),
 				y: 96,
 				w: 30,
 				h: 320,
@@ -37,7 +39,7 @@ class HexdumpScreen {
 			}));
 
 			this.textColumns.push(hmUI.createWidget(hmUI.widget.TEXT, {
-				x: 116 + (18*i),
+				x: (DEVICE_WIDTH-192)/2 + 116 + (18*i),
 				y: 96,
 				w: 18,
 				h: 320,
@@ -49,7 +51,7 @@ class HexdumpScreen {
 		}
 
 		hmUI.createWidget(hmUI.widget.IMG, {
-			x: 0,
+			x: (DEVICE_WIDTH-192)/2 ,
 			y: 0,
 			w: 192,
 			h: 245,
@@ -58,7 +60,7 @@ class HexdumpScreen {
 			this.refresh(this.offset - 64);
 		})
 		hmUI.createWidget(hmUI.widget.IMG, {
-			x: 0,
+			x: (DEVICE_WIDTH-192)/2,
 			y: 245,
 			w: 192,
 			h: 245,
@@ -107,6 +109,7 @@ class HexdumpScreen {
 
 Page({
   onInit(p) {
+    console.log(`HexdumpScreen`);
     AppGesture.withYellowWorkaround("left", {
       appid: 33904,
       url: "page/HexdumpScreen",
