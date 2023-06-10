@@ -171,7 +171,7 @@ class MainScreen {
 
     // Events
     const handleChange = (e) => {
-      const delta = e.x > 96 ? 1 : -1;
+      const delta = e.x > DEVICE_WIDTH/2 ? 1 : -1;
 
       let val = hmSetting.getBrightness() + (5 * delta);
       val = Math.min(Math.max(0, val), 100);
@@ -190,8 +190,12 @@ class MainScreen {
 
   _updateBrightness() {
     const val = 192 * (hmSetting.getBrightness() / 100);
+    console.log(`getBrightness = ${val}`);
     this.widgetBrightness.setProperty(hmUI.prop.MORE, {
-      w: Math.max(val, 24),
+      ...baseBrightnessConfig,
+      x: (DEVICE_WIDTH-192)/2,
+      // w: Math.max(val, 24),
+      w: val,
       alpha: val == 0 ? 0 : 200,
     });
   }
